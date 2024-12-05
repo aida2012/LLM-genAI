@@ -87,22 +87,15 @@ def main():
             )
             return results
         
-        # def add_person(results,name):
-        #     for match in results['matches']:
-        #         # Agregar el identificador de persona a cada resultado
-        #         match['persona'] = name
-        #     print(results)
-        #     return results
- 
+
 
         if contains_word(user_question,"marcelo") and not contains_word(user_question,"aida"):
             search_results = search_results(index_marcelo)
             print("index marcelo")
         elif contains_word(user_question,"marcelo") and contains_word(user_question,"aida"):
             search_result_aida = search_results(index_aida)
-            #add_person(search_result_aida,"Aida")
             search_result_marcelo = search_results(index_marcelo)
-            #add_person(search_result_marcelo,"Marcelo")
+
             print("index marcelo y aida")
             # Combinar los resultados de Aida y Marcelo en search_results
             search_results = {
@@ -112,11 +105,6 @@ def main():
             search_results = search_results(index_aida)
             print("index aida")
 
-        # Combinar los resultados de la búsqueda con el contexto
-        # pinecone_context = "\n".join([
-        #     f"{match['persona']} - Resultado {i+1}: {match['metadata']['text']}" 
-        #     for i, match in enumerate(search_results['matches'])
-        #     ])
         
         pinecone_context = "\n".join([ 
             f"{match['metadata']['persona']} - Resultado {i+1}: {match['metadata']['text']}" 
